@@ -2,25 +2,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Burger Master - Cardápio Digital</title>
+    <title>Burger Master - Cardápio & Pedidos</title>
     <style>
         /* Estilos Globais */
         body {
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #0f172a; /* Azul escuro quase preto */
+            background-color: #0f172a; /* Azul escuro */
             color: #f1f5f9;
         }
 
         /* Cabeçalho */
         header {
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&w=800&q=80');
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&w=800&q=80');
             background-size: cover;
             background-position: center;
             text-align: center;
-            padding: 60px 20px;
-            border-bottom: 4px solid #f59e0b; /* Linha amarela dourada */
+            padding: 50px 20px;
+            border-bottom: 4px solid #f59e0b;
         }
 
         header h1 {
@@ -29,19 +29,17 @@
             color: #f59e0b;
             text-transform: uppercase;
             letter-spacing: 2px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
         }
 
         header p {
             margin: 10px 0 0;
             font-size: 1.1rem;
             color: #cbd5e1;
-            font-style: italic;
         }
 
         /* Container Principal */
         .container {
-            max-width: 600px; /* Perfeito para telas de celular */
+            max-width: 600px;
             margin: 0 auto;
             padding: 20px;
         }
@@ -58,13 +56,11 @@
 
         /* Cartão do Item (Card) */
         .item-card {
-            background-color: #1e293b; /* Fundo cinza escuro */
+            background-color: #1e293b;
             border-radius: 12px;
             overflow: hidden;
             margin-bottom: 20px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-            display: flex;
-            flex-direction: column;
         }
 
         .item-imagem {
@@ -83,7 +79,6 @@
             color: #ffffff;
             display: flex;
             justify-content: space-between;
-            align-items: center;
         }
 
         .item-preco {
@@ -98,21 +93,115 @@
             line-height: 1.4;
         }
 
-        /* Botão de Pedido */
-        .btn-pedido {
+        /* Botão Adicionar ao Carrinho */
+        .btn-adicionar {
             display: block;
+            width: 100%;
             text-align: center;
-            background-color: #25d366; /* Verde WhatsApp */
-            color: white;
-            text-decoration: none;
-            padding: 10px;
+            background-color: #f59e0b; /* Amarelo */
+            color: #0f172a;
+            border: none;
+            padding: 12px;
             border-radius: 6px;
             font-weight: bold;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+            cursor: pointer;
             transition: background-color 0.2s;
         }
 
-        .btn-pedido:hover {
+        .btn-adicionar:hover {
+            background-color: #d97706;
+        }
+
+        /* Seção do Carrinho e Formulário */
+        .checkout-box {
+            background-color: #1e293b;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 40px;
+            border: 1px solid #334155;
+        }
+
+        .checkout-box h3 {
+            color: #f59e0b;
+            margin-top: 0;
+            border-bottom: 1px solid #334155;
+            padding-bottom: 10px;
+        }
+
+        .carrinho-vazio {
+            color: #94a3b8;
+            font-style: italic;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        /* Itens dentro do Carrinho de Compras */
+        .carrinho-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #334155;
+        }
+
+        .btn-remover {
+            background: none;
+            border: none;
+            color: #ef4444;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .total-box {
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-align: right;
+            margin: 20px 0;
+            color: #ffffff;
+        }
+
+        /* Campos do Formulário de Entrega */
+        .campo-grupo {
+            margin-bottom: 15px;
+        }
+
+        .campo-grupo label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+            color: #cbd5e1;
+        }
+
+        .campo-grupo input, .campo-grupo select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #475569;
+            background-color: #0f172a;
+            color: white;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+
+        /* Botão de Enviar tudo */
+        .btn-finalizar {
+            display: block;
+            width: 100%;
+            background-color: #25d366; /* Verde WhatsApp */
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            margin-top: 20px;
+        }
+
+        .btn-finalizar:hover {
             background-color: #128c7e;
         }
 
@@ -130,54 +219,89 @@
 
     <header>
         <h1>Burger Master</h1>
-        <p>Os Melhores Hambúrgueres Artesanais da Região</p>
+        <p>Monte seu pedido e receba em casa!</p>
     </header>
 
     <div class="container">
         
-        <!-- SEÇÃO: BURGERS -->
-        <h2 class="categoria-titulo">Hambúrgueres</h2>
+        <!-- CARDÁPIO -->
+        <h2 class="categoria-titulo">Burgers Artesanais</h2>
 
-        <!-- Burger 1 -->
         <div class="item-card">
-            <img class="item-imagem" src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80" alt="Master Burger">
+            <img class="item-imagem" src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80">
             <div class="item-detalhes">
                 <div class="item-nome">
                     <span>Master Burger</span>
-                    <span class="item-preco">R$ 28,90</span>
+                    <span class="item-preco">R$ 28.90</span>
                 </div>
-                <p class="item-descricao">Pão brioche selado na manteiga, blend artesanal de 150g, queijo cheddar derretido, alface, tomate e nossa maionese da casa.</p>
-                <!-- Lembre-se de trocar o número '5500999999999' pelo seu WhatsApp real -->
-                <a href="https://wa.me/5500999999999?text=Olá!%20Gostaria%20de%20pedir%201%20Master%20Burger." target="_blank" class="btn-pedido">🍔 Pedir no WhatsApp</a>
+                <p class="item-descricao">Pão brioche, blend 150g, queijo cheddar, alface, tomate e maionese da casa.</p>
+                <button class="btn-adicionar" onclick="adicionarAoCarrinho('Master Burger', 28.90)">Adicionar ao Pedido</button>
             </div>
         </div>
 
-        <!-- Burger 2 -->
         <div class="item-card">
-            <img class="item-imagem" src="https://images.unsplash.com/photo-1553979459-d2229ba7433b?auto=format&fit=crop&w=600&q=80" alt="Double Cheddar Bacon">
+            <img class="item-imagem" src="https://images.unsplash.com/photo-1553979459-d2229ba7433b?auto=format&fit=crop&w=600&q=80">
             <div class="item-detalhes">
                 <div class="item-nome">
                     <span>Cheddar Bacon</span>
-                    <span class="item-preco">R$ 34,90</span>
+                    <span class="item-preco">R$ 34.90</span>
                 </div>
-                <p class="item-descricao">Pão australiano, dois blends de 120g smash, muito cheddar cremoso e tiras de bacon super crocantes.</p>
-                <a href="https://wa.me/5500999999999?text=Olá!%20Gostaria%20de%20pedir%201%20Cheddar%20Bacon." target="_blank" class="btn-pedido">🍔 Pedir no WhatsApp</a>
+                <p class="item-descricao">Pão australiano, duplo blend de 120g smash, muito cheddar e bacon crocante.</p>
+                <button class="btn-adicionar" onclick="adicionarAoCarrinho('Cheddar Bacon', 34.90)">Adicionar ao Pedido</button>
             </div>
         </div>
 
-        <!-- SEÇÃO: BEBIDAS -->
         <h2 class="categoria-titulo">Bebidas</h2>
 
-        <!-- Bebida 1 -->
         <div class="item-card">
-            <img class="item-imagem" src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=600&q=80" alt="Refrigerante">
+            <img class="item-imagem" src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=600&q=80">
             <div class="item-detalhes">
                 <div class="item-nome">
                     <span>Refrigerante Lata</span>
-                    <span class="item-preco">R$ 6,00</span>
+                    <span class="item-preco">R$ 6.00</span>
                 </div>
                 <p class="item-descricao">Coca-Cola, Guaraná Antárctica ou Fanta Laranja (Lata 350ml).</p>
-                <a href="https://wa.me/5585921441063?text=Olá!%20Gostaria%20de%20pedir%201%20Refrigerante%20Lata." target="_blank" class="btn-pedido">🥤 Pedir no WhatsApp</a>
+                <button class="btn-adicionar" onclick="adicionarAoCarrinho('Refrigerante Lata', 6.00)">Adicionar ao Pedido</button>
+            </div>
+        </div>
+
+        <!-- SEÇÃO CARRINHO & CHECKOUT -->
+        <div class="checkout-box">
+            <h3>🛒 Seu Pedido</h3>
+            
+            <!-- Itens do Carrinho vão aparecer aqui dentro via JavaScript -->
+            <div id="itens-carrinho">
+                <p class="carrinho-vazio">Seu carrinho está vazio.</p>
+            </div>
+
+            <div class="total-box" id="total-pedido" style="display: none;">
+                Total: R$ 0.00
+            </div>
+
+            <!-- Formulário de Entrega e Pagamento -->
+            <div id="formulario-entrega" style="display: none;">
+                <h3>📍 Dados de Entrega</h3>
+                
+                <div class="campo-grupo">
+                    <label for="nome">Seu Nome *</label>
+                    <input type="text" id="nome" placeholder="Digite seu nome completo">
+                </div>
+
+                <div class="campo-grupo">
+                    <label for="endereco">Endereço Completo *</label>
+                    <input type="text" id="endereco" placeholder="Rua, número, bairro e ponto de referência">
+                </div>
+
+                <div class="campo-grupo">
+                    <label for="pagamento">Forma de Pagamento *</label>
+                    <select id="pagamento">
+                        <option value="Pix">Pix</option>
+                        <option value="Cartão de Crédito/Débito">Cartão de Crédito/Débito</option>
+                        <option value="Dinheiro">Dinheiro</option>
+                    </select>
+                </div>
+
+                <button class="btn-finalizar" onclick="enviarPedido()">✅ Enviar Pedido via WhatsApp</button>
             </div>
         </div>
 
@@ -185,8 +309,103 @@
 
     <footer>
         <p>&copy; 2026 Burger Master. Todos os direitos reservados.</p>
-        <p>Rua dos Hambúrgueres, 123 - Centro</p>
     </footer>
+
+    <!-- LOGICA DO CARRINHO (JAVASCRIPT) -->
+    <script>
+        let carrinho = [];
+
+        function adicionarAoCarrinho(nome, preco) {
+            // Verifica se o item já está no carrinho
+            const itemExistente = carrinho.find(item => item.nome === nome);
+
+            if (itemExistente) {
+                itemExistente.quantidade += 1;
+            } else {
+                carrinho.push({ nome: nome, preco: preco, quantidade: 1 });
+            }
+
+            atualizarInterface();
+        }
+
+        function removerDoCarrinho(nome) {
+            carrinho = carrinho.filter(item => item.nome !== nome);
+            atualizarInterface();
+        }
+
+        function atualizarInterface() {
+            const containerItens = document.getElementById('itens-carrinho');
+            const totalBox = document.getElementById('total-pedido');
+            const formEntrega = document.getElementById('formulario-entrega');
+
+            if (carrinho.length === 0) {
+                containerItens.innerHTML = '<p class="carrinho-vazio">Seu carrinho está vazio.</p>';
+                totalBox.style.display = 'none';
+                formEntrega.style.display = 'none';
+                return;
+            }
+
+            // Exibir blocos escondidos
+            totalBox.style.display = 'block';
+            formEntrega.style.display = 'block';
+
+            // Renderizar itens
+            containerItens.innerHTML = '';
+            let valorTotal = 0;
+
+            carrinho.forEach(item => {
+                const subtotal = item.preco * item.quantidade;
+                valorTotal += subtotal;
+
+                containerItens.innerHTML += `
+                    <div class="carrinho-item">
+                        <span><strong>${item.quantidade}x</strong> ${item.nome} (R$ ${subtotal.toFixed(2)})</span>
+                        <button class="btn-remover" onclick="removerDoCarrinho('${item.nome}')">Remover</button>
+                    </div>
+                `;
+            });
+
+            totalBox.innerHTML = `Total: R$ ${valorTotal.toFixed(2)}`;
+        }
+
+        function enviarPedido() {
+            const nome = document.getElementById('nome').value;
+            const endereco = document.getElementById('endereco').value;
+            const pagamento = document.getElementById('pagamento').value;
+
+            // Validação simples
+            if (!nome || !endereco) {
+                alert("Por favor, preencha o seu nome e endereço de entrega!");
+                return;
+            }
+
+            // Seu WhatsApp (Substitua pelo seu número real!)
+            const seuTelefone = "5585921441063"; 
+
+            // Montar texto da mensagem
+            let mensagem = `*🍔 NOVO PEDIDO - BURGER MASTER* \n\n`;
+            mensagem += `*Cliente:* ${nome}\n`;
+            mensagem += `*Endereço:* ${endereco}\n`;
+            mensagem += `*Forma de Pagamento:* ${pagamento}\n\n`;
+            mensagem += `*--- ITENS DO PEDIDO ---*\n`;
+
+            let valorTotal = 0;
+            carrinho.forEach(item => {
+                const subtotal = item.preco * item.quantidade;
+                valorTotal += subtotal;
+                mensagem += `${item.quantidade}x ${item.nome} - R$ ${subtotal.toFixed(2)}\n`;
+            });
+
+            mensagem += `\n*Valor Total:* R$ ${valorTotal.toFixed(2)}`;
+
+            // Codificar texto para link da web
+            const mensagemFormatada = encodeURIComponent(mensagem);
+
+            // Redirecionar para o WhatsApp
+            const urlWhatsApp = `https://wa.me/${seuTelefone}?text=${mensagemFormatada}`;
+            window.open(urlWhatsApp, '_blank');
+        }
+    </script>
 
 </body>
 </html>
