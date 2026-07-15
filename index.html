@@ -1,0 +1,192 @@
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burger Master - Cardápio Digital</title>
+    <style>
+        /* Estilos Globais */
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #0f172a; /* Azul escuro quase preto */
+            color: #f1f5f9;
+        }
+
+        /* Cabeçalho */
+        header {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&w=800&q=80');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            padding: 60px 20px;
+            border-bottom: 4px solid #f59e0b; /* Linha amarela dourada */
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            color: #f59e0b;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+
+        header p {
+            margin: 10px 0 0;
+            font-size: 1.1rem;
+            color: #cbd5e1;
+            font-style: italic;
+        }
+
+        /* Container Principal */
+        .container {
+            max-width: 600px; /* Perfeito para telas de celular */
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Títulos de Categorias */
+        h2.categoria-titulo {
+            color: #f59e0b;
+            font-size: 1.5rem;
+            border-left: 5px solid #f59e0b;
+            padding-left: 10px;
+            margin: 30px 0 15px;
+            text-transform: uppercase;
+        }
+
+        /* Cartão do Item (Card) */
+        .item-card {
+            background-color: #1e293b; /* Fundo cinza escuro */
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .item-imagem {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .item-detalhes {
+            padding: 15px;
+        }
+
+        .item-nome {
+            font-size: 1.3rem;
+            margin: 0 0 5px 0;
+            color: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .item-preco {
+            color: #f59e0b;
+            font-weight: bold;
+        }
+
+        .item-descricao {
+            font-size: 0.95rem;
+            color: #94a3b8;
+            margin: 0 0 15px 0;
+            line-height: 1.4;
+        }
+
+        /* Botão de Pedido */
+        .btn-pedido {
+            display: block;
+            text-align: center;
+            background-color: #25d366; /* Verde WhatsApp */
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: background-color 0.2s;
+        }
+
+        .btn-pedido:hover {
+            background-color: #128c7e;
+        }
+
+        /* Rodapé */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: #0b0f19;
+            color: #64748b;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Burger Master</h1>
+        <p>Os Melhores Hambúrgueres Artesanais da Região</p>
+    </header>
+
+    <div class="container">
+        
+        <!-- SEÇÃO: BURGERS -->
+        <h2 class="categoria-titulo">Hambúrgueres</h2>
+
+        <!-- Burger 1 -->
+        <div class="item-card">
+            <img class="item-imagem" src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80" alt="Master Burger">
+            <div class="item-detalhes">
+                <div class="item-nome">
+                    <span>Master Burger</span>
+                    <span class="item-preco">R$ 28,90</span>
+                </div>
+                <p class="item-descricao">Pão brioche selado na manteiga, blend artesanal de 150g, queijo cheddar derretido, alface, tomate e nossa maionese da casa.</p>
+                <!-- Lembre-se de trocar o número '5500999999999' pelo seu WhatsApp real -->
+                <a href="https://wa.me/5500999999999?text=Olá!%20Gostaria%20de%20pedir%201%20Master%20Burger." target="_blank" class="btn-pedido">🍔 Pedir no WhatsApp</a>
+            </div>
+        </div>
+
+        <!-- Burger 2 -->
+        <div class="item-card">
+            <img class="item-imagem" src="https://images.unsplash.com/photo-1553979459-d2229ba7433b?auto=format&fit=crop&w=600&q=80" alt="Double Cheddar Bacon">
+            <div class="item-detalhes">
+                <div class="item-nome">
+                    <span>Cheddar Bacon</span>
+                    <span class="item-preco">R$ 34,90</span>
+                </div>
+                <p class="item-descricao">Pão australiano, dois blends de 120g smash, muito cheddar cremoso e tiras de bacon super crocantes.</p>
+                <a href="https://wa.me/5500999999999?text=Olá!%20Gostaria%20de%20pedir%201%20Cheddar%20Bacon." target="_blank" class="btn-pedido">🍔 Pedir no WhatsApp</a>
+            </div>
+        </div>
+
+        <!-- SEÇÃO: BEBIDAS -->
+        <h2 class="categoria-titulo">Bebidas</h2>
+
+        <!-- Bebida 1 -->
+        <div class="item-card">
+            <img class="item-imagem" src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=600&q=80" alt="Refrigerante">
+            <div class="item-detalhes">
+                <div class="item-nome">
+                    <span>Refrigerante Lata</span>
+                    <span class="item-preco">R$ 6,00</span>
+                </div>
+                <p class="item-descricao">Coca-Cola, Guaraná Antárctica ou Fanta Laranja (Lata 350ml).</p>
+                <a href="https://wa.me/5585921441063?text=Olá!%20Gostaria%20de%20pedir%201%20Refrigerante%20Lata." target="_blank" class="btn-pedido">🥤 Pedir no WhatsApp</a>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Burger Master. Todos os direitos reservados.</p>
+        <p>Rua dos Hambúrgueres, 123 - Centro</p>
+    </footer>
+
+</body>
+</html>
